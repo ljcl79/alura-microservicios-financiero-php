@@ -45,7 +45,7 @@ $server->on('task', function (Server $server, $task_id, $reactorId, array $data)
     if ($data['task_name'] === 'process_payment') {
         /** @var EnrollClientInputData $inputData */
         $inputData = $data['data'];
-        echo 'Processando pagamento de ' . $inputData->cardOwnerFullName . PHP_EOL;
+        echo 'Procesando pago de ' . $inputData->cardOwnerFullName . PHP_EOL;
         sleep(3);
 
         $processPayment = $container->get(ProcessPayment::class);

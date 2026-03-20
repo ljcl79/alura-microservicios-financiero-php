@@ -19,8 +19,7 @@ class ProcessPayment
     public function __construct(
         private ClientRepository $clientRepository,
         private MessagingQueue $messagingQueue,
-    ) {
-    }
+    ) {}
 
     public function __invoke(EnrollClientInputData $data)
     {
@@ -33,6 +32,8 @@ class ProcessPayment
         );
         $email = new Email($data->email);
         $client = new Client($document, $cardInfo, $email);
+
+        echo 'Registrando cliente ' . $data->cardOwnerFullName . PHP_EOL;
 
         $this->clientRepository->add($client);
 
